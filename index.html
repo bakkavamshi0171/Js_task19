@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+        }
+        #formDiv{
+            border: 1px solid black;
+            background-color: rgba(21, 207, 198, 0.753);
+            color: rgb(8, 8, 8);
+            text-align: center;
+            width:400px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        form{
+            padding: 15px;
+        }
+        #heading1{
+            background-color:cadetblue;
+        }
+        input{
+            padding: 5px;
+            border: none;
+        }
+        .p1{
+            padding: 8px;
+        }
+        #grp{
+            margin-left: -18px;
+        }
+        #filepara{
+            margin-left: 40px;
+        }
+        input[type="file"]{
+            width:62%
+        }
+         #idcard{
+            margin-left: 30px;
+         }
+         #rolepara{
+            margin-left: 38px;
+         }
+         input[type="submit"]{
+            background-color:rgb(15, 101, 104);
+            width:100px;
+            font-size: medium;
+            border-radius: 10px;
+            color: aliceblue;
+            font-weight: 700;
+         }
+       
+    </style>
+</head>
+<body>
+    <div id ="formDiv">
+        <h1 id="heading1">Id Card Form</h1>
+        <br>
+        <form onsubmit="demo(event)">
+            <p class="p1">
+            <label for="fname">First name </label>
+            <input type="text" id="fname" name="fname"></p>
+            <p class="p1">
+            <label for="lname">Last name </label>
+            <input type="text" id="lname" name="lname"></p>
+            <p class="p1">
+            <label for="bloodgrp" id="grp">Blood-Group </label>
+            <input type="text" id="bloodgrp" name="bloodgrp">
+            </p>
+            <p class="p1" id="filepara">
+            <label for="image">Profile</label>
+            <input type="file" id="image" name="file">
+            </p>
+            <p class="p1" id ="idcard">
+            <label for="card">ID no</label>
+            <input type="text" id="card" name="card">
+            </p>
+            <p class="p1" id="rolepara">
+            <label for="role">Role</label>
+            <input type="text" id="role" name="role">
+            </p>
+            <input type="submit">
+        </form>
+        
+    </div>
+    <script>
+        function demo(event){
+            event.preventDefault()
+            let fname = document.getElementById("fname");
+            let lname = document.getElementById("lname");
+            let bloodgrp= document.getElementById("bloodgrp");
+            let file = document.getElementById("image");
+            let card = document.getElementById("card");
+            let role = document.getElementById("role");
+            let formDiv = document.getElementById("formDiv");
+            // p[0].innerHTML= fname.value;
+        
+        let myDiv = document.createElement("div");
+        myDiv.setAttribute("id", "mydiv");
+        myDiv.style.height = "400px";
+        myDiv.style.width = "300px";
+        myDiv.style.borderColor = "red";
+        myDiv.style.border= "2px solid";
+        document.body.appendChild(myDiv)
+
+        let myDiv1 = document.createElement("div");
+        myDiv1.setAttribute("class", "mydiv1");
+        myDiv1.style.height = "50%";
+        myDiv1.style.backgroundColor = "#147899";
+        
+        myDiv.appendChild(myDiv1);
+
+        let h1 = document.createElement("h1") ;
+        h1.setAttribute("id", "header");
+        h1.innerHTML= "10K-Coders";
+        h1.style.textAlign ="center";
+        h1.style.color="white";
+        h1.style.margin="0px";
+        h1.style.marginBottom = "10px"
+        myDiv1.appendChild(h1);
+        h1.style.backgroundColor="#784568";
+
+        let imgDiv = document.createElement("div");
+        imgDiv.setAttribute("id", "imgDiv");
+        imgDiv.style.width="50%";
+        imgDiv.style.height = "70%";
+        imgDiv.style.backgroundColor="#879653";
+        imgDiv.style.borderRadius = "50%"
+        imgDiv.style.border="1px solid white"
+        imgDiv.style.marginLeft = "22%";
+        imgDiv.style.padding = "10px"
+        myDiv1.appendChild(imgDiv);
+        
+        let myDiv2= document.createElement("div");
+        myDiv2.setAttribute("class", "mydiv2");
+        myDiv2.style.height = "50%";
+        myDiv2.style.backgroundColor = "#007899";
+        myDiv2.style.textAlign ="center";
+        myDiv2.style.color="white";
+        myDiv2.style.padding="10px"
+        myDiv.appendChild(myDiv2);
+
+        let h2=document.createElement('h3');
+        h2.setAttribute("class", "name");
+        h2.innerHTML = fname.value +" "+ lname.value
+        h2.style.padding="10px";
+        h2.style.margin="0px";
+        myDiv2.appendChild(h2);
+        
+        let p=document.createElement('p');
+        p.setAttribute("class", "role");
+        p.innerHTML =`Role : ${role.value}`
+        p.style.margin="0px";
+        myDiv2.appendChild(p);
+
+        let id=document.createElement('p');
+        id.setAttribute("class", "id");
+        id.innerHTML =`Id : ${card.value}`
+        id.style.margin="10px";
+        myDiv2.appendChild(id);
+
+        let bloodGrp=document.createElement('p');
+        bloodGrp.setAttribute("class", "bloodgrp");
+        bloodGrp.innerHTML =`Blood-Group : ${bloodgrp.value}`
+        bloodGrp.style.margin="10px";
+        myDiv2.appendChild(bloodGrp);
+
+
+        let img = document.createElement("img");
+        imgDiv.appendChild(img);
+        const reader = new FileReader();
+        reader.readAsDataURL(file.files[0]);
+        reader.addEventListener("load",(e)=>{
+            img.setAttribute("src", e.target.result);
+            img.style.width="100%"
+            img.style.height="100%";
+            img.style.borderRadius = "50%";
+        })
+        
+
+        let p1=document.createElement('p');
+        p1.setAttribute("class", "role");
+        p1.style.padding= "19px";
+        p1.style.margin="0px";
+        
+        p1.style.backgroundColor="#784568";
+        myDiv2.appendChild(p1);
+        formDiv.style.display = "none"
+        }
+    </script>
+</body>
+</html>
