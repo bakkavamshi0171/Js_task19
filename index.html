@@ -103,7 +103,8 @@
             let card = document.getElementById("card");
             let role = document.getElementById("role");
             let formDiv = document.getElementById("formDiv");
-            // p[0].innerHTML= fname.value;
+            formDiv.style.display = "none"
+            
         
         let myDiv = document.createElement("div");
         myDiv.setAttribute("id", "mydiv");
@@ -190,13 +191,11 @@
         
 
         let p1=document.createElement('p');
-        p1.setAttribute("class", "role");
+        p1.setAttribute("class", "blank");
         p1.style.padding= "19px";
         p1.style.margin="0px";
-        
         p1.style.backgroundColor="#784568";
         myDiv2.appendChild(p1);
-        formDiv.style.display = "none"
         }
     </script>
 </body>
